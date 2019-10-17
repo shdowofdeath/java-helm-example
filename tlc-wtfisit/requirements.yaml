@@ -1,0 +1,20 @@
+dependencies:
+- name: consumer
+  version: 0.1.0
+  repository: file://.././consumer_repo/consumer
+  condition: consumer.enabled
+
+- name: producer
+  version: 0.1.0
+  repository: file://.././producer_repo/producer
+  condition: producer.enabled
+
+- name: kafka
+  version: 1.0.1
+  repository: file://.././kafka_repo/kafka
+  condition: kafka.enabled
+
+- name: mysql
+  version: 0.1.0
+  repository: file://.././mysql_repo/mysql
+  condition: mariadb.enabled

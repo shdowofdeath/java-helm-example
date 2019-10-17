@@ -1,0 +1,6 @@
+ApiVersion: v1
+appVersion: "1.0"
+description: Aggragated chart for maro service
+name: tlc-wtfisit
+version: 0.1.0
+

@@ -1,0 +1,15 @@
+dependencies:
+- name: consumer
+  repository: file://.././consumer_repo/consumer
+  version: 0.1.0
+- name: producer
+  repository: file://.././producer_repo/producer
+  version: 0.1.0
+- name: kafka
+  repository: file://.././kafka_repo/kafka
+  version: 1.0.1
+- name: mysql
+  repository: file://.././mysql_repo/mysql
+  version: 0.1.0
+digest: sha256:089d825a06f926c3566246d068e8837580a4d12f4b011be4554add870436fd14
+generated: 2019-10-17T16:11:43.980934321+03:00

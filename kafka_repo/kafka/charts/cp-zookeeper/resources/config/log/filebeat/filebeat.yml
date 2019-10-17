@@ -1,0 +1,10 @@
+filebeat.prospectors:
+  - input_type: log
+    paths:
+      - {{.Values.logs.logFileDir}}/*.*
+    ignore_older: 48h
+    clean_inactive: 96h
+output.elasticsearch:
+  hosts: ["{{.Values.logs.elasticsearch.url}}"]
+  index: "{{.Values.logs.elasticsearch.index}}"
+  protocol: "http"

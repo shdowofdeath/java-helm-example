@@ -1,0 +1,7 @@
+apiVersion: v1
+description: Fast, reliable, scalable, and easy to use open-source relational database
+  system. MariaDB Server is intended for mission-critical, heavy-load production systems
+  as well as for embedding into mass-deployed software. Highly available MariaDB cluster.
+icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+name: mysql
+version: 0.1.0

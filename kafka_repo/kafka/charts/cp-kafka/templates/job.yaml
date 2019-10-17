@@ -1,0 +1,29 @@
+{{- if .Values.initDocker }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-kafka-init-continer
+spec:
+  template:
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-kafka-init-continer
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        command:
+        - sh
+        - -exc
+        - |
+          # Create the topic
+          sleep 10
+          topic={{ .Values.topic }} 
+          # Create the topic
+          kafka-topics --zookeeper {{ template "cp-kafka.cp-zookeeper.service-name" . }} --topic ${topic} --create --partitions 1 --replication-factor 1 --if-not-exists && \
+          # Create a message
+          MESSAGE="`date -u`" && \
+          # Produce a test message to the topic
+          echo "$MESSAGE" | kafka-console-producer --broker-list {{ template "cp-kafka.fullname" . }}:9092 --topic ${topic} && \
+          # Consume a test message from the topic
+          kafka-console-consumer --bootstrap-server {{ template "cp-kafka.fullname" . }}-headless:9092 --topic ${topic} --from-beginning --timeout-ms 2000 | grep "$MESSAGE"
+      restartPolicy: Never
+  backoffLimit: 500
+{{- end }}
